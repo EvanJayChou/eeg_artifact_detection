@@ -3,7 +3,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
+from .TranAD_model import TranAD
+import matplotlib.pyplot as plt
 from datetime import datetime
+from ..utils.loss_plots import plot_losses
+from ..utils.dataloader import load_train_data
 
 # === GLOBAL VARIABLES ===
 NUM_EPOCHS = 20
@@ -14,45 +18,19 @@ BATCH_SIZE = 10
 LEARNING_RATE = 1e-3
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# Directory for saving model files
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
 save_dir = os.path.join(MODEL_PATH, f'tranAD_train_{timestamp}')
 os.makedirs(save_dir, exist_ok=True)
 
-# === TranAD ARCHITECTURE ===
-class TranAD(nn.Module):
-    def __init__(self, num_features, seq_len, d_model=64, nhead=4, num_layers=2):
-        super().__init__()
-        self.input_proj = nn.Linear(num_features, d_model)
-        encoder_layer = nn.TransformerEncoderLayer(d_model=d_model, nhead=nhead)
-        self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
-        decoder_layer = nn.TransformerDecoderLayer(d_model=d_model, nhead=nhead)
-        self.decoder = nn.TransformerDecoder(decoder_layer, num_layers=num_layers)
-        self.output_layer = nn.Linear(d_model, num_features)
-
-    def forward(self, x):
-        x_proj = self.input_proj(x)
-        x_proj = x_proj.permute(1,0,2)
-
-        enc_out = self.encoder(x_proj)
-        dec_out = self.decoder(x_proj, enc_out)
-
-        dec_out = dec_out.permute(1,0,2)
-        out = self.output_layer(dec_out)
-        return out
-
-# === DATA LOADING FUNCTION ===
-def load_data(train_path, val_path, batch_size):
-    train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
-    val_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
-
-    return 
-
 # === TRAINING FUNCTION ===
-def train_tranad(model, train_loader, val_loader, num_epochs, lr, device):
+def train_tranAD(model, train_loader, val_loader, num_epochs, lr, device):
     model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.MSELoss()
 
+    train_losses = []
+    val_losses = []
     best_loss = float("inf")
     best_epoch = -1
 
@@ -68,6 +46,7 @@ def train_tranad(model, train_loader, val_loader, num_epochs, lr, device):
             optimizer.step()
             train_loss += loss.item()
         train_loss /= len(train_loader)
+        train_losses.append(train_loss)
 
         model.eval()
         val_loss = 0
@@ -78,6 +57,7 @@ def train_tranad(model, train_loader, val_loader, num_epochs, lr, device):
                 loss = criterion(y_pred, y)
                 val_loss += loss.item()
         val_loss /= len(val_loader)
+        val_losses.append(val_loss)
 
         print(f"Epoch {epoch+1}/{num_epochs} | Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f}")
 
@@ -88,5 +68,7 @@ def train_tranad(model, train_loader, val_loader, num_epochs, lr, device):
             print(f"Saved new best model at epoch {best_epoch} (Loss: {best_loss:.4f})")
 
 if __name__ == "__main__":
-    train_loader, val_loader = load_data(TRAIN_DATA_PATH, VAL_DATA_PATH, BATCH_SIZE)
+    train_loader, val_loader = load_train_data(TRAIN_DATA_PATH, VAL_DATA_PATH, BATCH_SIZE)
     model = TranAD()
+    train_tranAD(model, train_loader, val_loader, NUM_EPOCHS, LEARNING_RATE, DEVICE)
+    print("Done")
