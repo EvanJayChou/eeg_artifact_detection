@@ -1,0 +1,907 @@
+
+Missing files for subject: aaaaaaju_s005_t000
+  fp1_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaaaju_s007_t000
+  fp1_epoch0_raw.pt
+Missing files for subject: aaaaaall_s004_t000
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaaayx_s002_t000
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaabiw_s005_t000
+  c4_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaabiw_s016_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaabiw_s017_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaabiw_s018_t000
+  fp1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaabsk_s007_t000
+  o1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaacad_s003_t000
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaacby_s004_t000
+  c4_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaachj_s002_t006
+  fp1_epoch0_raw.pt
+Missing files for subject: aaaaacyf_s007_t002
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaacyf_s007_t003
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaacyf_s007_t010
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaacyf_s009_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaadjk_s002_t000
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaadmi_s012_t005
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t4_epoch0_raw.pt
+  t6_epoch0_raw.pt
+Missing files for subject: aaaaadmi_s013_t013
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaadmi_s014_t002
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaadmi_s014_t008
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaadsm_s002_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaeab_s003_t000
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaelb_s003_t000
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaels_s006_t006
+  f4_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaaenq_s004_t000
+  c4_epoch0_raw.pt
+  t5_epoch0_raw.pt
+  t6_epoch0_raw.pt
+Missing files for subject: aaaaaezj_s007_t002
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaafdh_s004_t001
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaafhl_s003_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaagsc_s003_t001
+  c4_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaagsc_s006_t001
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaguk_s002_t001
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaagvx_s003_t001
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaahte_s002_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaahte_s003_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+Missing files for subject: aaaaahzm_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaahzs_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaaiat_s003_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaibx_s001_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaaiby_s001_t000
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaicc_s004_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaiue_s004_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaaiyu_s001_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaaizu_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaajah_s002_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajah_s004_t000
+  fp1_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaajam_s001_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajfk_s002_t001
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaajns_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaajns_s002_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaajns_s003_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajns_s005_t001
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaajns_s007_t001
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajoa_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajoe_s001_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajoo_s002_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajqh_s004_t000
+  f7_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaajqo_s028_t000
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaajqo_s033_t000
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t5_epoch0_raw.pt
+Missing files for subject: aaaaajrf_s001_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrf_s002_t000
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrf_s003_t002
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrf_s004_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s003_t012
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s004_t004
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s004_t005
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s004_t008
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s005_t007
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s006_t006
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t4_epoch0_raw.pt
+  t5_epoch0_raw.pt
+  t6_epoch0_raw.pt
+Missing files for subject: aaaaajrj_s006_t007
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaajso_s001_t000
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajuh_s001_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajys_s001_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajzm_s004_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+Missing files for subject: aaaaakbz_s001_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaakbz_s002_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p4_epoch0_raw.pt
+Missing files for subject: aaaaakbz_s005_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaakck_s001_t001
+  c4_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakcv_s001_t001
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakcx_s001_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakcy_s005_t001
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakdj_s001_t000
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaakdo_s001_t000
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakev_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakft_s001_t000
+  fp1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaakgp_s001_t001
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakka_s001_t001
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaakmg_s001_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+Missing files for subject: aaaaakqg_s001_t001
+  cz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakqr_s001_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaaksb_s001_t000
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaaktz_s001_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakxo_s001_t000
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaakxz_s001_t001
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  f8_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+  t4_epoch0_raw.pt
+Missing files for subject: aaaaalaf_s001_t000
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaalbt_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalbt_s002_t000
+  fp1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaalco_s002_t000
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalfj_s006_t006
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaalfj_s006_t008
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+Missing files for subject: aaaaalid_s001_t001
+  cz_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaljj_s001_t000
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaallc_s001_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalmh_s001_t000
+  f7_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaalnt_s001_t001
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaalox_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaloy_s012_t002
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalqs_s001_t001
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalsq_s001_t000
+  fp1_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaaluz_s001_t001
+  c4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaalvw_s001_t000
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  t3_epoch0_raw.pt
+Missing files for subject: aaaaabuv_s002_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+Missing files for subject: aaaaadeu_s002_t000
+  c3_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaaezn_s003_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  o1_epoch0_raw.pt
+  o2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaahuy_s002_t000
+  fz_epoch0_raw.pt
+Missing files for subject: aaaaaimu_s003_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+Missing files for subject: aaaaaimu_s008_t000
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaaimu_s008_t002
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f7_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  fz_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajqu_s013_t012
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  p3_epoch0_raw.pt
+  p4_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajqu_s013_t016
+  c3_epoch0_raw.pt
+  cz_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  pz_epoch0_raw.pt
+Missing files for subject: aaaaajtu_s001_t000
+  fp1_epoch0_raw.pt
+Missing files for subject: aaaaaksu_s001_t001
+  c3_epoch0_raw.pt
+  c4_epoch0_raw.pt
+  f3_epoch0_raw.pt
+  f4_epoch0_raw.pt
+  fp1_epoch0_raw.pt
+  fp2_epoch0_raw.pt
+  pz_epoch0_raw.pt
