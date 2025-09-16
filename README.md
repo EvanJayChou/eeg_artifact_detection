@@ -1,4 +1,4 @@
-# Artifact Detection in EEG Data
+# Artifact Removal and Denoising in EEG Data
 
 ## Models Used
 
