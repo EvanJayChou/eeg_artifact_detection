@@ -8,7 +8,6 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 from datetime import datetime
-import shutil
 
 # Ensure project root is on sys.path so imports work when running as a script
 root_dir = str(Path(__file__).parent.parent)
@@ -17,10 +16,10 @@ if root_dir not in sys.path:
 
 from TranAD.TranAD_model import TranAD
 from utils.loss_plots import plot_losses
-from utils.dataloader import load_train_data
 import pickle
 from torch.utils.data import DataLoader as TorchDataLoader
-from glob import glob
+# no glob/wildcard fallbacks required
+from dat_dataset_4_full.date_loader import DataLoader as EEGDataset
 
 # === DEFAULTS ===
 NUM_EPOCHS = 20
@@ -157,93 +156,20 @@ if __name__ == "__main__":
     save_dir = os.path.join(MODEL_PATH, f'tranAD_train_{timestamp}')
     os.makedirs(save_dir, exist_ok=True)
 
-    # If the provided data_dir contains cached DataLoader files, copy them into the project's utils cached directory
-    project_cache_dir = os.path.join(root_dir, "utils", "cached_loaders")
-    os.makedirs(project_cache_dir, exist_ok=True)
-
+    # Use the dataset loader module from dat_dataset_4_full/date_loader.py
+    # Expect the directory `data_dir` to contain 'raw' and 'clean' subfolders as required by the loader.
     try:
-        # If user uploaded a folder that contains a 'cached_loaders' subfolder
-        candidate_subdir = os.path.join(data_dir, "cached_loaders")
-        if os.path.isdir(candidate_subdir):
-            for fname in os.listdir(candidate_subdir):
-                if fname.endswith('.pkl'):
-                    shutil.copy(os.path.join(candidate_subdir, fname), project_cache_dir)
-        else:
-            # Otherwise, copy any .pkl files found directly at the mounted data_dir
-            for fname in os.listdir(data_dir):
-                if fname.endswith('.pkl'):
-                    shutil.copy(os.path.join(data_dir, fname), project_cache_dir)
+        train_dataset = EEGDataset(data_dir, split='training_epochs')
+        val_dataset = EEGDataset(data_dir, split='validation_epochs')
     except Exception as e:
-        print(f"No cache files copied: {e}")
+        raise RuntimeError(f"Failed to instantiate dataset loader from '{data_dir}': {e}")
 
-    # --- New: if the data_dir already contains pickled dataloaders, load them directly.
-    # Assumption: two files are provided named with prefixes 'dataset_loader_clean' and 'dataset_loader_raw'
-    # 'dataset_loader_clean*' -> train loader (cleaned/processed), 'dataset_loader_raw*' -> validation loader
-    provided_train_loader = None
-    provided_val_loader = None
-    try:
-        # search for files matching possible names
-        clean_candidates = glob(os.path.join(data_dir, 'dataset_loader_clean*.pkl'))
-        raw_candidates = glob(os.path.join(data_dir, 'dataset_loader_raw*.pkl'))
+    # ensure loader has a transform attribute to avoid AttributeError inside dataset
+    setattr(train_dataset, 'transform', None)
+    setattr(val_dataset, 'transform', None)
 
-        def try_load_loader(path):
-            try:
-                with open(path, 'rb') as f:
-                    obj = pickle.load(f)
-                # If already a DataLoader, return directly
-                if isinstance(obj, TorchDataLoader):
-                    return obj
-                # If dict with dataset entries, reconstruct DataLoader
-                if isinstance(obj, dict):
-                    if 'train_dataset' in obj and 'val_dataset' in obj:
-                        # this is a combined cache file; caller expects two loaders
-                        tr = TorchDataLoader(obj['train_dataset'], batch_size=obj.get('batch_size', DEFAULT_BATCH_SIZE), shuffle=False, num_workers=obj.get('num_workers', 0))
-                        vl = TorchDataLoader(obj['val_dataset'], batch_size=obj.get('batch_size', DEFAULT_BATCH_SIZE), shuffle=False, num_workers=obj.get('num_workers', 0))
-                        return (tr, vl)
-                    if 'train_dataset' in obj:
-                        return TorchDataLoader(obj['train_dataset'], batch_size=obj.get('batch_size', DEFAULT_BATCH_SIZE), shuffle=False, num_workers=obj.get('num_workers', 0))
-                    if 'val_dataset' in obj:
-                        return TorchDataLoader(obj['val_dataset'], batch_size=obj.get('batch_size', DEFAULT_BATCH_SIZE), shuffle=False, num_workers=obj.get('num_workers', 0))
-                # If it's a Dataset instance, wrap it
-                try:
-                    import torch.utils.data as tud
-                    if isinstance(obj, tud.Dataset):
-                        return TorchDataLoader(obj, batch_size=DEFAULT_BATCH_SIZE, shuffle=False, num_workers=0)
-                except Exception:
-                    pass
-                # unknown object
-                return None
-            except Exception:
-                return None
-
-        # Try loading combined cache first (some users save both in one file)
-        combined_candidates = glob(os.path.join(data_dir, 'dataset_loader_*.pkl'))
-        for c in combined_candidates:
-            loaded = try_load_loader(c)
-            if isinstance(loaded, tuple) and len(loaded) == 2:
-                provided_train_loader, provided_val_loader = loaded
-                break
-
-        if provided_train_loader is None and clean_candidates:
-            provided_train_loader = try_load_loader(clean_candidates[0])
-        if provided_val_loader is None and raw_candidates:
-            provided_val_loader = try_load_loader(raw_candidates[0])
-    except Exception as e:
-        print(f"Error while attempting to load provided dataloaders: {e}")
-
-    # Use provided pickled dataloaders if present, otherwise fall back to constructing loaders
-    if provided_train_loader is not None and provided_val_loader is not None:
-        print("Using provided pickled dataloaders from data directory.")
-        train_loader = provided_train_loader
-        val_loader = provided_val_loader
-    else:
-        # Use the mounted data path (args.data) if provided, otherwise fall back to repo dataset
-        if args.data:
-            repo_data_dir = args.data
-        else:
-            repo_data_dir = os.path.join(root_dir, "dat_dataset_4")
-
-        train_loader, val_loader = load_train_data(repo_data_dir, args.batch_size, use_cache=not args.no_cache)
+    train_loader = TorchDataLoader(train_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+    val_loader = TorchDataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
 
     # Infer input dims from a single batch
     try:
