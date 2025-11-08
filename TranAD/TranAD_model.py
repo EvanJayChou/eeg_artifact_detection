@@ -14,12 +14,24 @@ class TranAD(nn.Module):
         self.output_layer = nn.Linear(d_model, num_features)
 
     def forward(self, x):
-        x_proj = self.input_proj(x)
-        x_proj = x_proj.permute(1,0,2)
+        # Support inputs with or without batch dimension.
+        # Expected input shapes:
+        # - (B, T, F) where B=batch, T=seq_len, F=num_features
+        # - (T, F) single-sample without batch dim
+        if x.dim() == 2:
+            # add batch dim
+            x = x.unsqueeze(0)
+        if x.dim() != 3:
+            raise ValueError(f"Unsupported input tensor shape for TranAD: {x.shape}")
+
+        x_proj = self.input_proj(x)  # (B, T, d_model)
+        # Transformer expects sequence-first: (T, B, d_model)
+        x_proj = x_proj.permute(1, 0, 2)
 
         enc_out = self.encoder(x_proj)
         dec_out = self.decoder(x_proj, enc_out)
 
-        dec_out = dec_out.permute(1,0,2)
+        # restore batch-first: (B, T, d_model)
+        dec_out = dec_out.permute(1, 0, 2)
         out = self.output_layer(dec_out)
         return out
