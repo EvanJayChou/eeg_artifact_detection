@@ -18,7 +18,6 @@ from TranAD.TranAD_model import TranAD
 from utils.loss_plots import plot_losses
 import pickle
 from torch.utils.data import DataLoader as TorchDataLoader
-# no glob/wildcard fallbacks required
 from dat_dataset_4_full.date_loader import DataLoader as EEGDataset
 
 # === DEFAULTS ===
