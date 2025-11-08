@@ -18,7 +18,7 @@ from TranAD.TranAD_model import TranAD
 from utils.loss_plots import plot_losses
 import pickle
 from torch.utils.data import DataLoader as TorchDataLoader
-from dat_dataset_4_full.date_loader import DataLoader as EEGDataset
+from dat_dataset_4.date_loader import DataLoader as EEGDataset
 
 # === DEFAULTS ===
 NUM_EPOCHS = 20
@@ -145,7 +145,7 @@ if __name__ == "__main__":
         data_dir = args.data
     else:
         # default to repository data folder
-        data_dir = os.path.join(root_dir, "dat_dataset_4")
+        data_dir = os.path.join(root_dir, "dat_dataset_4/dat_dataset_4")
 
     print(f"Using data directory: {data_dir}")
     print(f"Batch size: {args.batch_size}, epochs: {args.epochs}, lr: {args.lr}, use_cache: {not args.no_cache}")

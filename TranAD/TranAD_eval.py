@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader as TorchDataLoader
 import matplotlib.pyplot as plt
 
 from TranAD.TranAD_model import TranAD
-from dat_dataset_4_full.date_loader import DataLoader as EEGDataset
+from dat_dataset_4.date_loader import DataLoader as EEGDataset
 
 
 # === Defaults ===
