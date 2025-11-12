@@ -4,8 +4,8 @@ This project investigates different deep learning models and transformer archite
 
 ## Models Used
 
+- EEG Conformer: Convolutional Transformer for EEG Decoding and Visualization
 - TranAD: Deep Transformer Networks for Anomaly Detection
-- Conformer: Convolution-augmented Transformer for Speech Recognition
 
 ## Credits
 
