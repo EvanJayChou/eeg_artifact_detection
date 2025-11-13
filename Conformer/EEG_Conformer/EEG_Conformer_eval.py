@@ -6,7 +6,8 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader as TorchDataLoader
 import matplotlib.pyplot as plt
 
-from EEG_Conformer_train import EEGConformerDenoiser
+from EEG_Conformer_denoiser import EEGConformerDenoiser
+from EEG_Conformer_utils import ensure_btf
 from dat_dataset_4.date_loader import DataLoader as EEGDataset
 
 
@@ -27,12 +28,7 @@ def evaluate(model, test_loader, model_path, save_dir, device):
     snr_improvements = []
     correlations = []
 
-    def _ensure_btf(t: torch.Tensor) -> torch.Tensor:
-        if t.ndim == 3:
-            b, d1, d2 = t.shape
-            if d1 < d2:
-                t = t.transpose(1, 2)
-        return t
+    _ensure_btf = ensure_btf
 
     def calculate_snr(signal):
         mean = torch.mean(signal)

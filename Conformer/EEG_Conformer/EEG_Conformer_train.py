@@ -14,49 +14,10 @@ root_dir = str(Path(__file__).parent.parent)
 if root_dir not in sys.path:
     sys.path.append(root_dir)
 
-from EEG_Conformer_model import ConformerBlock, PositionalEncoding  # reuse building blocks
+from EEG_Conformer_denoiser import EEGConformerDenoiser
+from EEG_Conformer_utils import ensure_btf, charbonnier_loss, derivative_charbonnier_loss, multi_resolution_stft_loss
 from utils.loss_plots import plot_losses
 from dat_dataset_4.date_loader import DataLoader as EEGDataset
-
-
-class EEGConformerDenoiser(nn.Module):
-    """Sequence-to-sequence Conformer denoiser based on EEG_Conformer building blocks.
-    Maps (B, T, F) noisy input to (B, T, F) denoised output.
-    """
-
-    def __init__(
-        self,
-        num_features: int,
-        embed_dim: int = 128,
-        num_heads: int = 4,
-        num_layers: int = 2,
-        ff_dim: int = 256,
-        conv_kernel: int = 31,
-        dropout: float = 0.1,
-        max_len: int = 5000,
-    ):
-        super().__init__()
-        self.input_proj = nn.Linear(num_features, embed_dim)
-        self.pos_enc = PositionalEncoding(embed_dim, max_len=max_len)
-        self.layers = nn.ModuleList(
-            [
-                ConformerBlock(embed_dim, ff_dim, num_heads, conv_kernel=conv_kernel, dropout=dropout)
-                for _ in range(num_layers)
-            ]
-        )
-        self.norm = nn.LayerNorm(embed_dim)
-        self.output_proj = nn.Linear(embed_dim, num_features)
-
-    def forward(self, x):
-        # x: (B, T, F)
-        x = self.input_proj(x)
-        x = self.pos_enc(x)
-        for layer in self.layers:
-            x = layer(x)
-        x = self.norm(x)
-        x = self.output_proj(x)
-        return x
-
 
 # === DEFAULTS ===
 NUM_EPOCHS = 20
@@ -64,34 +25,37 @@ MODEL_PATH = "models"
 DEFAULT_BATCH_SIZE = 10
 DEFAULT_LEARNING_RATE = 1e-3
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEFAULT_W_TIME = 0.5
+DEFAULT_W_STFT = 1.0
+DEFAULT_W_DERIV = 0.1
 
 
-def _ensure_btf(t: torch.Tensor) -> torch.Tensor:
-    """Ensure tensor is (B, T, F). Accepts (B, F, T) or (B, T, F)."""
-    if t.ndim == 3:
-        b, d1, d2 = t.shape
-        # If middle dim appears to be features (smaller), then transpose to (B, T, F)
-        if d1 < d2:  # likely (B, F, T)
-            t = t.transpose(1, 2)
-        # else already (B, T, F)
-    return t
-
+_ensure_btf = ensure_btf
 
 # === TRAINING FUNCTION ===
-def train_eeg_conformer(model, train_loader, val_loader, epochs, lr, device):
+def train_eeg_conformer(
+    model,
+    train_loader,
+    val_loader,
+    epochs,
+    lr,
+    device,
+    w_time: float = DEFAULT_W_TIME,
+    w_stft: float = DEFAULT_W_STFT,
+    w_deriv: float = DEFAULT_W_DERIV,
+):
     model.to(device)
     optimizer = optim.Adam(model.parameters(), lr=lr)
-    mse_criterion = nn.MSELoss()
-    l1_criterion = nn.L1Loss()
 
-    train_losses = {"mse": [], "mae": [], "total": []}
-    val_losses = {"mse": [], "mae": [], "total": []}
+    train_losses = {"time": [], "stft": [], "deriv": [], "total": []}
+    val_losses = {"time": [], "stft": [], "deriv": [], "total": []}
     best_loss = float("inf")
 
     for epoch in range(epochs):
         model.train()
-        train_mse = 0.0
-        train_mae = 0.0
+        train_time = 0.0
+        train_stft = 0.0
+        train_deriv = 0.0
         train_total = 0.0
 
         for batch in train_loader:
@@ -102,26 +66,30 @@ def train_eeg_conformer(model, train_loader, val_loader, epochs, lr, device):
             optimizer.zero_grad()
             denoised = model(noisy)
 
-            mse_loss = mse_criterion(denoised, clean)
-            mae_loss = l1_criterion(denoised, clean)
-            total_loss = mse_loss + 0.5 * mae_loss
+            loss_time = charbonnier_loss(denoised, clean)
+            loss_stft = multi_resolution_stft_loss(denoised, clean, device)
+            loss_deriv = derivative_charbonnier_loss(denoised, clean)
+            total_loss = w_time * loss_time + w_stft * loss_stft + w_deriv * loss_deriv
 
             total_loss.backward()
             optimizer.step()
 
-            train_mse += mse_loss.item()
-            train_mae += mae_loss.item()
+            train_time += loss_time.item()
+            train_stft += loss_stft.item()
+            train_deriv += loss_deriv.item()
             train_total += total_loss.item()
 
         n_train = max(1, len(train_loader))
-        train_losses["mse"].append(train_mse / n_train)
-        train_losses["mae"].append(train_mae / n_train)
+        train_losses["time"].append(train_time / n_train)
+        train_losses["stft"].append(train_stft / n_train)
+        train_losses["deriv"].append(train_deriv / n_train)
         train_losses["total"].append(train_total / n_train)
 
         # Validation
         model.eval()
-        val_mse = 0.0
-        val_mae = 0.0
+        val_time = 0.0
+        val_stft = 0.0
+        val_deriv = 0.0
         val_total = 0.0
         with torch.no_grad():
             for batch in val_loader:
@@ -130,26 +98,31 @@ def train_eeg_conformer(model, train_loader, val_loader, epochs, lr, device):
                 clean = _ensure_btf(clean).to(device)
 
                 denoised = model(noisy)
-                mse_loss = mse_criterion(denoised, clean)
-                mae_loss = l1_criterion(denoised, clean)
-                total_loss = mse_loss + 0.5 * mae_loss
+                loss_time = charbonnier_loss(denoised, clean)
+                loss_stft = multi_resolution_stft_loss(denoised, clean, device)
+                loss_deriv = derivative_charbonnier_loss(denoised, clean)
+                total_loss = w_time * loss_time + w_stft * loss_stft + w_deriv * loss_deriv
 
-                val_mse += mse_loss.item()
-                val_mae += mae_loss.item()
+                val_time += loss_time.item()
+                val_stft += loss_stft.item()
+                val_deriv += loss_deriv.item()
                 val_total += total_loss.item()
 
         n_val = max(1, len(val_loader))
-        val_mse /= n_val
-        val_mae /= n_val
+        val_time /= n_val
+        val_stft /= n_val
+        val_deriv /= n_val
         val_total /= n_val
 
-        val_losses["mse"].append(val_mse)
-        val_losses["mae"].append(val_mae)
+        val_losses["time"].append(val_time)
+        val_losses["stft"].append(val_stft)
+        val_losses["deriv"].append(val_deriv)
         val_losses["total"].append(val_total)
 
         print(
-            f"Epoch {epoch+1}/{epochs} | Train MSE: {train_losses['mse'][-1]:.4f} | Train MAE: {train_losses['mae'][-1]:.4f} | "
-            f"Val MSE: {val_mse:.4f} | Val MAE: {val_mae:.4f}"
+            f"Epoch {epoch+1}/{epochs} | "
+            f"Train (time:{train_losses['time'][-1]:.4f}, stft:{train_losses['stft'][-1]:.4f}, deriv:{train_losses['deriv'][-1]:.4f}) | "
+            f"Val (time:{val_time:.4f}, stft:{val_stft:.4f}, deriv:{val_deriv:.4f})"
         )
 
         # Save best model
@@ -168,6 +141,9 @@ if __name__ == "__main__":
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     parser.add_argument("--epochs", type=int, default=NUM_EPOCHS)
     parser.add_argument("--lr", type=float, default=DEFAULT_LEARNING_RATE)
+    parser.add_argument("--w-time", type=float, default=DEFAULT_W_TIME, help="Weight for time-domain Charbonnier loss")
+    parser.add_argument("--w-stft", type=float, default=DEFAULT_W_STFT, help="Weight for multi-resolution STFT loss")
+    parser.add_argument("--w-deriv", type=float, default=DEFAULT_W_DERIV, help="Weight for derivative Charbonnier loss")
     args = parser.parse_args()
 
     # Resolve data path
@@ -210,5 +186,15 @@ if __name__ == "__main__":
     model = EEGConformerDenoiser(num_features=num_features)
     setattr(model, "_save_dir", save_dir)
 
-    train_eeg_conformer(model, train_loader, val_loader, args.epochs, args.lr, DEVICE)
+    train_eeg_conformer(
+        model,
+        train_loader,
+        val_loader,
+        args.epochs,
+        args.lr,
+        DEVICE,
+        w_time=args.w_time,
+        w_stft=args.w_stft,
+        w_deriv=args.w_deriv,
+    )
     print("Done")
