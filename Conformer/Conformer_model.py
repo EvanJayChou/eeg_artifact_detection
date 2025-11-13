@@ -1,3 +1,8 @@
+"""
+    WARNING: This model is now deprecated.
+    The new model is in the EEG_Conformer directory, in which we are using the EEG Conformer variant instead.
+"""
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -37,7 +42,7 @@ class ConformerBlock(nn.Module):
         x = x + 0.5*self.ffn2(x)
         return self.norm(x)
 
-class ConformerEEG(nn.Module):
+class Conformer(nn.Module):
     def __init__(self, num_features, num_classes, d_model=64, n_blocks=2):
         super().__init__()
         self.input_proj = nn.Linear(num_features, d_model)

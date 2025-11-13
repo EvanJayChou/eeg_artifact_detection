@@ -1,3 +1,8 @@
+"""
+    WARNING: This model is now deprecated.
+    The new model is in the EEG_Conformer directory, in which we are using the EEG Conformer variant instead.
+"""
+
 import os
 import torch
 import torch.nn as nn
@@ -24,6 +29,4 @@ save_dir = os.path.join(MODEL_PATH, f'tranAD_train_{timestamp}')
 os.makedirs(save_dir, exist_ok=True)
 
 # === TRAINING FUNCTION ===
-def train_conformer(self, train_loader, val_loader, num_epochs, lr, device) {
-    
-}
+# def train_conformer(self, train_loader, val_loader, num_epochs, lr, device):
