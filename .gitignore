@@ -3,3 +3,4 @@
 *__pycache__
 *cached_loaders
 .env
+/hpc_scripts
