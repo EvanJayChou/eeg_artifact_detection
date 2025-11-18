@@ -1,10 +1,17 @@
 import os
+import sys
+import argparse
+from pathlib import Path
 from datetime import datetime
 import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader as TorchDataLoader
 import matplotlib.pyplot as plt
+
+root_dir = str(Path(__file__).parent.parent)
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
 
 from EEG_Conformer_denoiser import EEGConformerDenoiser
 from EEG_Conformer_utils import ensure_btf

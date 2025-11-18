@@ -1,4 +1,11 @@
 import torch.nn as nn
+import sys
+from pathlib import Path
+
+root_dir = str(Path(__file__).parent.parent)
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
+
 from .EEG_Conformer_model import ConformerBlock, PositionalEncoding
 
 

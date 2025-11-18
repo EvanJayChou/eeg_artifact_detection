@@ -20,6 +20,7 @@ class PositionalEncoding(nn.Module):
 
     def forward(self, x):
         # x: (batch, seq_len, d_model)
+        # Use actual input sequence length to slice positional encodings (robust)
         seq_len = x.size(1)
         x = x + self.pe[:, :seq_len, :].to(x.dtype)
         return x

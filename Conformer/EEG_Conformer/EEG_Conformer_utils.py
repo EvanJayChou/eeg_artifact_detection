@@ -43,11 +43,20 @@ def multi_resolution_stft_loss(pred: torch.Tensor, target: torch.Tensor, device:
     for n_fft, hop, win in settings:
         S_pred = _stft_mag(pred, n_fft, hop, win, device)
         S_tgt = _stft_mag(target, n_fft, hop, win, device)
-        num = torch.linalg.norm(S_pred - S_tgt, ord='fro')
-        den = torch.linalg.norm(S_tgt, ord='fro') + eps
-        sc = num / den
+
+        # _stft_mag returns magnitude with leading dim B*F; reshape to per-sample vectors
+        B = pred.shape[0]
+        diff = S_pred - S_tgt
+        diff_flat = diff.contiguous().view(B, -1)
+        tgt_flat = S_tgt.contiguous().view(B, -1)
+
+        num = torch.norm(diff_flat, dim=1)  # per-sample norms
+        den = torch.norm(tgt_flat, dim=1) + eps
+        sc = (num / den).mean()
+
         log_mag = torch.mean(torch.abs(torch.log(S_pred + eps) - torch.log(S_tgt + eps)))
         total_sc = total_sc + sc
         total_mag = total_mag + log_mag
+
     n = len(settings)
     return (total_sc + total_mag) / n

@@ -9,19 +9,26 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader as TorchDataLoader
 
-# Ensure project root is on sys.path so imports work when running as a script
-root_dir = str(Path(__file__).parent.parent)
-if root_dir not in sys.path:
-    sys.path.append(root_dir)
+# Ensure both the Conformer package directory and the repository root are on sys.path
+# so imports like `from EEG_Conformer...` and `from utils...` resolve when running the script.
+conformer_dir = str(Path(__file__).resolve().parent.parent)  # .../Conformer
+repo_root = str(Path(__file__).resolve().parent.parent.parent)  # project root
+if conformer_dir not in sys.path:
+    # prefer conformer_dir first so `import EEG_Conformer.*` finds the package folder
+    sys.path.insert(0, conformer_dir)
+if repo_root not in sys.path:
+    # keep repo root available for top-level packages like `utils`
+    sys.path.insert(1, repo_root)
 
-from EEG_Conformer_denoiser import EEGConformerDenoiser
-from EEG_Conformer_utils import ensure_btf, charbonnier_loss, derivative_charbonnier_loss, multi_resolution_stft_loss
+from EEG_Conformer.EEG_Conformer_denoiser import EEGConformerDenoiser
+from EEG_Conformer.EEG_Conformer_utils import ensure_btf, charbonnier_loss, derivative_charbonnier_loss, multi_resolution_stft_loss
+
 from utils.loss_plots import plot_losses
 from dat_dataset_4.date_loader import DataLoader as EEGDataset
 
 # === DEFAULTS ===
 NUM_EPOCHS = 20
-MODEL_PATH = "models"
+MODEL_PATH = "../models"
 DEFAULT_BATCH_SIZE = 10
 DEFAULT_LEARNING_RATE = 1e-3
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -31,6 +38,38 @@ DEFAULT_W_DERIV = 0.1
 
 
 _ensure_btf = ensure_btf
+
+
+def _align_input_for_model(model, noisy, clean):
+    """
+    Ensure tensors have the channel/features dimension where the model expects it.
+    Supports nn.Linear (expects features in last dim) and nn.Conv1d (expects channels in dim=1).
+    Returns possibly-permuted (noisy, clean).
+    """
+    # nothing to do for non-3D tensors
+    if noisy.ndim != 3:
+        return noisy, clean
+
+    if not hasattr(model, "input_proj"):
+        return noisy, clean
+
+    ip = model.input_proj
+
+    # Case: input projection is Linear -> expects last dim == in_features
+    if isinstance(ip, nn.Linear):
+        expected = ip.in_features
+        # if last dim already matches, ok. If second dim matches expected, permute (B, T, F) -> (B, F, T)
+        if noisy.shape[-1] != expected and noisy.shape[1] == expected:
+            noisy = noisy.permute(0, 2, 1)
+            clean = clean.permute(0, 2, 1)
+    # Case: input projection is Conv1d -> expects channels at dim=1 == in_channels
+    elif isinstance(ip, nn.Conv1d):
+        expected = ip.in_channels
+        if noisy.shape[1] != expected and noisy.shape[2] == expected:
+            noisy = noisy.permute(0, 2, 1)
+            clean = clean.permute(0, 2, 1)
+
+    return noisy, clean
 
 # === TRAINING FUNCTION ===
 def train_eeg_conformer(
@@ -62,6 +101,14 @@ def train_eeg_conformer(
             noisy, clean = (batch["raw"], batch["clean"]) if isinstance(batch, dict) else batch
             noisy = _ensure_btf(noisy).to(device)
             clean = _ensure_btf(clean).to(device)
+
+            # If ensure_btf accidentally returned a 2D tensor (B, T), add feature dim -> (B, T, 1)
+            if noisy.ndim == 2:
+                noisy = noisy.unsqueeze(-1)
+                clean = clean.unsqueeze(-1)
+
+            # Align tensors to model's expected channel/features dimension
+            noisy, clean = _align_input_for_model(model, noisy, clean)
 
             optimizer.zero_grad()
             denoised = model(noisy)
@@ -96,6 +143,14 @@ def train_eeg_conformer(
                 noisy, clean = (batch["raw"], batch["clean"]) if isinstance(batch, dict) else batch
                 noisy = _ensure_btf(noisy).to(device)
                 clean = _ensure_btf(clean).to(device)
+
+                # If ensure_btf returned 2D tensors, add feature dim
+                if noisy.ndim == 2:
+                    noisy = noisy.unsqueeze(-1)
+                    clean = clean.unsqueeze(-1)
+
+                # Align tensors to model expectation for validation as well
+                noisy, clean = _align_input_for_model(model, noisy, clean)
 
                 denoised = model(noisy)
                 loss_time = charbonnier_loss(denoised, clean)
@@ -147,7 +202,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Resolve data path
-    data_dir = args.data or os.path.join(root_dir, "dat_dataset_4/dat_dataset_4")
+    data_dir = args.data or os.path.join(repo_root, "dat_dataset_4")
     print(f"Using data directory: {data_dir}")
     print(f"Batch size: {args.batch_size}, epochs: {args.epochs}, lr: {args.lr}")
 
@@ -170,18 +225,33 @@ if __name__ == "__main__":
     except StopIteration:
         raise RuntimeError("Training loader is empty; cannot infer input dimensions")
     sample_tensor = sample_batch["raw"] if isinstance(sample_batch, dict) else sample_batch[0]
+    # Robust inference: support (B, T, F), (B, F, T), batched 2D (B, T) and single-sample (T, F)
+    seq_len = None
     if sample_tensor.ndim == 3:
         b, d1, d2 = sample_tensor.shape
-        if d1 < d2:  # (B, F, T) -> we'll transpose to (B, T, F)
-            num_features = d1
-        else:  # (B, T, F)
-            num_features = d2
+        # decide which axis is features vs time
+        if d1 < d2:
+            # assume (B, F, T) -> features = d1, seq_len = d2
+            num_features = int(d1)
+            seq_len = int(d2)
+        else:
+            # assume (B, T, F)
+            seq_len = int(d1)
+            num_features = int(d2)
     elif sample_tensor.ndim == 2:
-        # (T, F)
-        num_features = sample_tensor.shape[1]
+        # Could be batched (B, T) or a single sample (T, F). Use provided batch size to decide.
+        bs = args.batch_size
+        if sample_tensor.shape[0] == bs:
+            # batched 2D: (B, T) -> single-channel sequences
+            seq_len = int(sample_tensor.shape[1])
+            num_features = 1
+        else:
+            # single sample (T, F)
+            seq_len, num_features = map(int, sample_tensor.shape)
     else:
         raise ValueError(f"Unsupported sample tensor shape: {sample_tensor.shape}")
 
+    print(f"Inferred seq_len={seq_len}, num_features={num_features}")
     print(f"Instantiating EEG Conformer denoiser with num_features={num_features}")
     model = EEGConformerDenoiser(num_features=num_features)
     setattr(model, "_save_dir", save_dir)
